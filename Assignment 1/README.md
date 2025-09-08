@@ -65,7 +65,7 @@ At the end, the program prints the first few characters of each hash. Under diff
 
 
 
-Reflection 
+##Reflection 
 
 (Q)What did you learn about hashing & immutability?
 -> Working through this assignment made the mechanics of hashing and immutability feel concrete. A hash function like SHA-256 compresses structured data (index, timestamp, transactions, previous hash, and nonce) into a fixed-size fingerprint. Because the fingerprint is highly sensitive, even a tiny change—like flipping one digit in a transaction amount—yields a completely different hash. Linking each block with the previous block’s hash creates a chain of dependencies: altering one block invalidates its own hash and the link from the next block, and so on. That is the essence of immutability in a blockchain—data is not unchangeable by magic, but any change becomes detectable because it breaks the cryptographic continuity.
