@@ -67,11 +67,11 @@ At the end, the program prints the first few characters of each hash. Under diff
 
 # Reflection 
 
-(Q)What did you learn about hashing & immutability?
+(Q)What did you learn about hashing & immutability?<br>
 -> Working through this assignment made the mechanics of hashing and immutability feel concrete. A hash function like SHA-256 compresses structured data (index, timestamp, transactions, previous hash, and nonce) into a fixed-size fingerprint. Because the fingerprint is highly sensitive, even a tiny change—like flipping one digit in a transaction amount—yields a completely different hash. Linking each block with the previous block’s hash creates a chain of dependencies: altering one block invalidates its own hash and the link from the next block, and so on. That is the essence of immutability in a blockchain—data is not unchangeable by magic, but any change becomes detectable because it breaks the cryptographic continuity.
 
-(Q)Why does Proof-of-Work make blockchains secure?
+(Q)Why does Proof-of-Work make blockchains secure?<br>
 ->Proof-of-Work (PoW) adds a computational cost to creating a valid block. By requiring a hash to start with a certain number of leading zeros (e.g., 000 for difficulty 3+), the miner must try many nonces before finding a valid one. This randomness makes it infeasible to cheaply rewrite history. If an attacker tampers with an early block, they must re-mine that block and all subsequent blocks faster than the honest network—an exponentially harder task as difficulty and chain length grow. Thus, PoW contributes to security by making attacks impractically expensive in time and energy, while honest verification remains cheap (simply recompute hashes and check prefixes).
 
-(Q) What surprised you while coding this?
+(Q) What surprised you while coding this?<br>
 ->What surprised me most during coding was how simple the core loop is and how powerful the emergent property becomes. Incrementing a nonce and checking a prefix looks trivial, yet it transforms the ledger into a system where consensus favors the longest, most-worked chain. I also appreciated the importance of deterministic serialization (stable JSON ordering) for consistent hashing. Without it, logically identical objects could hash differently due to key order, causing false negatives. Overall, implementing PoW and validation clarified why blockchains are tamper-evident and why rewriting them is so costly in practice.
