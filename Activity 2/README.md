@@ -8,3 +8,10 @@ How to run:
 5) npx hardhat run scripts/analyze.ts --network localhost
 
 # Screenshots
+![Mining Output](./Screenshots/Screenshot (5616).png)
+![Mining Output](./Screenshots/Shot1.png)
+![Mining Output](./Screenshots/Shot1.png)
+![Mining Output](./Screenshots/Shot1.png)
+![Mining Output](./Screenshots/Shot1.png)
+![Mining Output](./Screenshots/Shot1.png)
+![Mining Output](./Screenshots/Shot1.png)
