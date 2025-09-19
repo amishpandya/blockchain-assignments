@@ -1,74 +1,76 @@
+// scripts/deploy.ts
 import "dotenv/config";
-import fs from "node:fs/promises";
-import path from "node:path";
+import { artifacts } from "hardhat";
 import {
-  createPublicClient,
   createWalletClient,
-  defineChain,
-  formatUnits,
+  createPublicClient,
   http,
   parseUnits,
+  getAddress,
+  type Abi,
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 
-const SUPPLY = process.env.TOKEN_SUPPLY ?? "1000000";
-const PRIVKEY = process.env.PRIVKEY as `0x${string}`;
-if (!PRIVKEY) throw new Error("Missing PRIVKEY in .env");
-
-// Respect --network localhost; otherwise use RPC_URL or default to localhost.
-const HH = process.env.HARDHAT_NETWORK;
-const RPC_URL =
-  HH === "localhost"
-    ? "http://127.0.0.1:8545"
-    : (process.env.RPC_URL || "http://127.0.0.1:8545");
-
-async function detectChain() {
-  const probe = createPublicClient({ transport: http(RPC_URL) });
-  const rpcChainId = await probe.getChainId();
-  return defineChain({
-    id: rpcChainId,
-    name: `rpc-${rpcChainId}`,
-    nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
-    rpcUrls: { default: { http: [RPC_URL] } },
-  });
-}
+const RPC_URL = process.env.RPC_URL ?? "";
+const CHAIN_ID = process.env.CHAIN_ID ? Number(process.env.CHAIN_ID) : undefined;
+const PRIVATE_KEY = (process.env.PRIVATE_KEY || "").replace(/^0x/, "");
+const NAME = process.env.TOKEN_NAME || "CampusCredit";
+const SYMBOL = process.env.TOKEN_SYMBOL || "CAMP";
+const CAP_HUMAN = process.env.TOKEN_CAP || "2000000";
+const INIT_HUMAN = process.env.TOKEN_INITIAL || "1000000";
 
 async function main() {
-  const chain = await detectChain();
+  if (!RPC_URL || !CHAIN_ID || !PRIVATE_KEY) {
+    throw new Error("Missing env vars: RPC_URL, CHAIN_ID, or PRIVATE_KEY");
+  }
 
-  const account = privateKeyToAccount(PRIVKEY);
+  // read artifact (Hardhat)
+  const artifact = await artifacts.readArtifact("CampusCreditV2");
+
+  // narrow types for viem
+  const abi = artifact.abi as unknown as Abi;
+  let bytecode = artifact.bytecode as string;
+  if (!bytecode.startsWith("0x")) bytecode = "0x" + bytecode;
+  // satisfy viem's template literal type
+  const bytecode0x = bytecode as `0x${string}`;
+
+  // build chain descriptor viem expects
+  const chain = {
+    id: CHAIN_ID,
+    name: `didlab-${CHAIN_ID}`,
+    nativeCurrency: { name: "ETH", symbol: "ETH", decimals: 18 },
+    rpcUrls: { default: { http: [RPC_URL] } },
+  } as const;
+
+  // wallet + provider clients
+  const account = privateKeyToAccount(`0x${PRIVATE_KEY}`);
+  const wallet = createWalletClient({ account, chain, transport: http(RPC_URL) });
   const publicClient = createPublicClient({ chain, transport: http(RPC_URL) });
-  const walletClient = createWalletClient({ chain, transport: http(RPC_URL), account });
 
-  const initialSupply = parseUnits(SUPPLY, 18);
+  // parse human amounts -> wei (NOTE: decimals is a number, not BigInt)
+  const cap = parseUnits(CAP_HUMAN, 18); // use number 18
+  const initialMint = parseUnits(INIT_HUMAN, 18);
 
-  // Load compiled artifact
-  const artifactPath = path.join("artifacts", "contracts", "CampusCredit.sol", "CampusCredit.json");
-  const { abi, bytecode } = JSON.parse(await fs.readFile(artifactPath, "utf8"));
-
-  // Deploy
-  const hash = await walletClient.deployContract({ abi, bytecode, args: [initialSupply] });
-  console.log("Deploy tx hash:", hash);
-
-  const receipt = await publicClient.waitForTransactionReceipt({ hash });
-  const address = receipt.contractAddress!;
-  console.log("CampusCredit deployed to:", address);
-  console.log("Deployer:", account.address);
-
-  // Check balance
-  const bal = (await publicClient.readContract({
-    address,
+  console.log("Deploying CampusCreditV2...");
+  const txHash = await wallet.deployContract({
     abi,
-    functionName: "balanceOf",
-    args: [account.address],
-  })) as bigint;
-  console.log("Deployer CAMP balance:", formatUnits(bal, 18));
+    bytecode: bytecode0x,
+    args: [NAME, SYMBOL, cap, getAddress(account.address), initialMint],
+    // EIP-1559 style values (bigints)
+    maxPriorityFeePerGas: 2_000_000_000n, // 2 gwei
+    maxFeePerGas: 20_000_000_000n, // 20 gwei
+  });
 
-  // Save deployment for later scripts
-  await fs.mkdir("deployments", { recursive: true });
-  const file = path.join("deployments", `${chain.id}-CampusCredit.json`);
-  await fs.writeFile(file, JSON.stringify({ address, chainId: chain.id }, null, 2));
-  console.log("Saved deployment →", file);
+  console.log("Deploy tx:", txHash);
+
+  // wait for receipt
+  const rcpt = await publicClient.waitForTransactionReceipt({ hash: txHash });
+
+  console.log("Deployed at:", rcpt.contractAddress);
+  console.log("Block:", rcpt.blockNumber?.toString());
+
+  // Print environment hint for subsequent scripts
+  console.log(`\nAdd this to .env (or copy it):\nTOKEN_ADDRESS=${rcpt.contractAddress}\n`);
 }
 
 main().catch((e) => {

@@ -1,0 +1,32 @@
+{
+  "name": "activity3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "compile": "npx hardhat compile",
+  "node": "npx hardhat node",
+  "deploy:localhost": "npx hardhat run scripts/deploy.ts --network localhost",
+  "xfer": "npx hardhat run scripts/transfer-approve.ts --network localhost",
+  "airdrop": "npx hardhat run scripts/airdrop.ts --network localhost",
+  "logs": "npx hardhat run scripts/logs-query.ts --network localhost",
+  "analyze": "npx hardhat run scripts/analyze.ts --network localhost"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ignition": "^3.0.3",
+    "@nomicfoundation/hardhat-toolbox-viem": "^5.0.0",
+    "@types/node": "^22.18.6",
+    "forge-std": "github:foundry-rs/forge-std#v1.9.4",
+    "hardhat": "^3.0.6",
+    "typescript": "~5.8.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.4.0",
+    "dotenv": "^17.2.2",
+    "viem": "^2.37.6"
+  },
+  "type": "module"
+}
