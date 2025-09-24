@@ -1,26 +1,34 @@
 {
-  "name": "assignment-3",
+  "name": "assignment3-erc20",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Production-Style ERC20 on DIDLab with Hardhat v3 + Viem",
+  "main": "hardhat.config.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "hardhat compile",
+    "clean": "hardhat clean",
+    "deploy": "hardhat run scripts/deploy.js --network didlab",
+    "transfer": "hardhat run scripts/transfer-approve.js --network didlab",
+    "airdrop": "hardhat run scripts/batch-airdrop.js --network didlab",
+    "logs": "hardhat run scripts/logs-events.js --network didlab"
   },
-  "keywords": [],
+  "keywords": [
+    "erc20",
+    "hardhat",
+    "viem",
+    "openzeppelin",
+    "didlab"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@nomicfoundation/hardhat-ignition": "^3.0.3",
-    "@nomicfoundation/hardhat-toolbox-viem": "^5.0.0",
-    "@types/node": "^22.18.6",
-    "forge-std": "github:foundry-rs/forge-std#v1.9.4",
+    "@nomicfoundation/hardhat-viem": "^3.0.0",
+    "dotenv": "^17.2.2",
+    "ethers": "^6.15.0",
     "hardhat": "^3.0.6",
-    "typescript": "~5.8.0",
     "viem": "^2.37.8"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.4.0",
-    "dotenv": "^17.2.2"
-  },
-  "type": "module"
+    "@openzeppelin/contracts": "^4.9.3"
+  }
 }
