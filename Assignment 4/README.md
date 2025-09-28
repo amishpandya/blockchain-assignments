@@ -2,14 +2,14 @@ RPC_URL=https://hh-10.didlab.org
 CHAIN_ID=31346
 Token Address: 0xF1478f211F027EBA42ca369ea976F1eB43C6bB53
 
-![Mining Output](./Screenshots/shot0.png)
-![Mining Output](./Screenshots/shot1.png)
-![Mining Output](./Screenshots/shot2.png)
-![Mining Output](./Screenshots/shot3.png)
-![Mining Output](./Screenshots/shot4.png)
-![Mining Output](./Screenshots/shot5.png)
-![Mining Output](./Screenshots/shot6.png)
-![Mining Output](./Screenshots/shot7.png)
+![Mining Output](./Screenshots/Shot0.png)
+![Mining Output](./Screenshots/Shot1.png)
+![Mining Output](./Screenshots/Shot2.png)
+![Mining Output](./Screenshots/Shot3.png)
+![Mining Output](./Screenshots/Shot4.png)
+![Mining Output](./Screenshots/Shot5.png)
+![Mining Output](./Screenshots/Shot6.png)
+![Mining Output](./Screenshots/Shot7.png)
 
 Shortnote:
 Extra Safety Checks / UX Touches:
