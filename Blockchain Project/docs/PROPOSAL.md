@@ -34,7 +34,7 @@ We will use **Ethereum (Hardhat local \+ testnet)**. Ethereum is a public EVM pl
 
 **High Level Diagram**
 
-![Mining Output](./Screenshots/Shot1.png)
+![Mining Output](../Screenshots/Shot1.png)
 
 **Low Level Diagram**
 
