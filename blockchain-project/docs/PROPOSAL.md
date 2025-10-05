@@ -34,11 +34,11 @@ We will use **Ethereum (Hardhat local \+ testnet)**. Ethereum is a public EVM pl
 
 **High Level Diagram**
 
-![Mining Output](./Screenshots/Shot1.png)
+![Mining Output](../Screenshots/Shot1.png)
 
 **Low Level Diagram**
 
-![Mining Output](./Screenshots/Shot2.png)
+![Mining Output](../Screenshots/Shot2.png)
 
 ## 
 
@@ -75,7 +75,7 @@ We will secure operations through wallet-gated actions (only sender/receiver can
 
 **Logistics**: Weekly standups, Whatsapp channel for communication, 
 
-**GitHub repo:** `https:<>`
+**GitHub repo:** `https://github.com/amishpandya/blockchain-assignments/tree/main/Blockchain%20Project`
 
 ## 
 
