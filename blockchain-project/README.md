@@ -1,13 +1,16 @@
-# Sample Hardhat Project
+## **Local Run and Screenshots**
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
 
-Try running some of the following tasks:
+![Mining Output](./Screenshots/Shot3.png)
+![Mining Output](./Screenshots/Shot4.png)
+![Mining Output](./Screenshots/Shot5.png)
+![Mining Output](./Screenshots/Shot6.png)
+![Mining Output](./Screenshots/Shot7.png)
+![Mining Output](./Screenshots/Shot8.png)
+![Mining Output](./Screenshots/Shot9.png)
+![Mining Output](./Screenshots/Shot10.png)
+![Mining Output](./Screenshots/Shot11.png)
+![Mining Output](./Screenshots/Shot12.png)
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
-```
+
+
