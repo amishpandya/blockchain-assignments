@@ -127,7 +127,7 @@ Include:
 * Link to project board
 
 Screenshots:
-![Mining Output](../Screenshots/Shot3.png)
+![Mining Output](../../Screenshots/Shot3.png)
 ![Mining Output](../Screenshots/Shot4.png)
 ![Mining Output](../Screenshots/Shot5.png)
 ![Mining Output](../Screenshots/Shot6.png)
