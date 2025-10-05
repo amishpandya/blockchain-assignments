@@ -10,7 +10,7 @@
 ![Mining Output](./Screenshots/Shot9.png)
 ![Mining Output](./Screenshots/Shot10.png)
 ![Mining Output](./Screenshots/Shot11.png)
-![Mining Output](./Screenshots/Shot12.png)
+
 
 
 
