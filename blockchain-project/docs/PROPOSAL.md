@@ -75,7 +75,7 @@ We will secure operations through wallet-gated actions (only sender/receiver can
 
 **Logistics**: Weekly standups, Whatsapp channel for communication, 
 
-**GitHub repo:** `https://github.com/amishpandya/blockchain-assignments/tree/main/Blockchain%20Project`
+**GitHub repo:** `https://github.com/amishpandya/blockchain-assignments/tree/main/blockchain-project`
 
 ## 
 
