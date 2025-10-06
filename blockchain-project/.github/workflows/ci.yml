@@ -21,10 +21,12 @@ jobs:
 
       # - name: Install dependencies
       #   run: npm install
+      #   working-directory: ./blockchain-project
 
       # - name: Compile smart contracts
       #   run: npx hardhat compile
+      #   working-directory: ./blockchain-project
 
       # - name: Run tests
       #   run: npx hardhat test
-
+      #   working-directory: ./blockchain-project
