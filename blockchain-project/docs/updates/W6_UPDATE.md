@@ -1,92 +1,56 @@
-Supply Chain DApp – Week 6 (W6) Submission
+# 📌 Week 6 Progress Update  
 
-Team: Immutables
+**Team:** Amish, Pranav, Lahari, Priya  
+**Date:** October 6, 2025  
 
-October 5, 2025
+---
 
-**Objective**
+## 📊 Weekly Rubric Breakdown  
 
-Everyone can build and run the program; skeleton exists; first test passes; CI works.
+### ✅ Progress  
+- Initialized **Next.js** app and verified successful build at [http://localhost:3000](http://localhost:3000).  
+- Installed and configured **Tailwind CSS** for frontend styling.  
+- Initialized **Hardhat** for Solidity smart contract development.  
+- Installed blockchain dependencies: **Ethers.js, Web3Modal, and Hardhat Toolbox**.  
+- Verified **“Hello World”** page render with Tailwind styling.  
+- Completed basic **repository structure** and **documentation setup**.  
 
-# **Submission Details**
+---
 
-* Submit on Canvas: PR link \+ repo \+ docs/updates/W6 UPDATE.md
+### 📁 Evidence  
+- **Screenshots attached** in `docs/updates/W6_UPDATE.md`:  
+  - Next.js initialization and local build output.  
+  - Tailwind CSS installation logs.  
+  - Hardhat initialization and dependency installations.  
+  - Local frontend run confirmation and terminal output.  
 
-* Required Artifacts in Repo:
+- **Repository:** [https://github.com/amishpandya/blockchain-assignments/tree/main/blockchain-project](https://github.com/amishpandya/blockchain-assignments/tree/main/blockchain-project)  
+- **Project board:** [https://github.com/amishpandya/blockchain-assignments/projects/1](https://github.com/amishpandya/blockchain-assignments/projects/1)  
 
-  * Updated README.md (local run steps) \+ link to project board
+---
 
-  * Hardhat skeleton: contracts/\<YourContract\>.sol, scripts/deploy.js, test/\<YourContrac **–** CI workflow: .github/workflows/ci.yml
+### 🔬 Technical Depth  
+- Integrated multiple frameworks: **Next.js (Frontend)**, **Hardhat (Blockchain)**, and **Tailwind CSS (Styling)**.  
+- Configured environment for **Solidity compilation** and **blockchain testing**.  
+- Understood **Web3 integration process** and handled dependency version conflicts.  
+- Prepared foundation for **smart contract deployment** and **CI testing**.  
 
-# **Project Overview**
+---
 
-A decentralized supply chain management application built with Next.js, Solidity, and Hardhat. This DApp enables suppliers and receivers to track, verify, and complete shipments on the blockchain.
+### 🎯 Next Plan  
+- Write and deploy first version of **Tracking.sol**.  
+- Implement **CI workflow** for automatic testing.  
+- Begin **wallet connection integration** with Web3Modal.  
 
-# **Architecture**
+---
 
-* **Frontend:** Next.js \+ Tailwind CSS
+### 🤝 Collaboration  
+- **Amish:** Repository setup, Hardhat configuration, and screenshots.  
+- **Pranav:** CI testing, Tailwind CSS styling.  
+- **Lahari:** Dependency management and test environment setup.  
+- **Priya:** Frontend build verification, W6 report creation, and markdown updates.  
 
-* **Smart Contract:** Solidity (Hardhat framework)
-
-* **Blockchain Tools:** Hardhat (local node), Ethers.js, Web3Modal, MetaMask
-
-* **Testing:** Mocha \+ Chai (Hardhat test suite)
-
-* **CI/CD:** GitHub Actions
-
-# **Local Run Instructions**
-
-## **1\. Clone Repository**
-
-git clone https://github.com/\<your-username\>/\<repo-name\>.git cd \<repo-name\>
-
-2. **Install Dependencies**npm install
-
-3. **Run Local Blockchain**
-
-npx hardhat node
-
-4. **Deploy Contract Locally**
-
-npx hardhat run scripts/deploy.js \--network localhost
-
-## **5\. Run Frontend**
-
-npm run dev
-
-Access the app at: [http://localhost:3000](http://localhost:3000/)
-
-# **Run Tests**
-
-npx hardhat test
-
-Example output:
-
-Tracking Contract should deploy correctly should create and fetch shipment
-
-# **Folder Structure**
-
-supply-chain-dapp/
-
-contracts/
-
-Tracking.sol
-
-scripts/ deploy.js test/  
-Tracking.test.js
-
-frontend/ pages/ components/ styles/
-
-.github/ workflows/ ci.yml
-
-docs/ updates/  
-W6\_UPDATE.md
-
-README.md
-
-**Project Board**
-
-Link: [https://github.com/amishpandya/blockchain-assignments/tree/main/blockchain-project](https://github.com/amishpandya/blockchain-assignments/tree/main/blockchain-project)
+✅ Team verified all setups across individual systems for consistency.  
 
 # **User Stories**
 
