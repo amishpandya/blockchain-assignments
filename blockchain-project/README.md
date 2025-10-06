@@ -49,7 +49,12 @@ Tracking Contract
 ![Mining Output](./Screenshots/Shot11.png)
 
 
+# WorkFlow File
+
+
 Making a final small Change to trigger CI Pipeline - prnv
+<img width="1919" height="821" alt="image" src="https://github.com/user-attachments/assets/324ae64a-2134-44f0-83c1-a2883dc6b92e" />
+<img width="1494" height="744" alt="image" src="https://github.com/user-attachments/assets/3dafaeac-33c9-4c62-8521-75852e9b6987" />
 
 
 
