@@ -24,8 +24,7 @@
   - Hardhat initialization and dependency installations.  
   - Local frontend run confirmation and terminal output.  
 
-- **Repository:** [https://github.com/amishpandya/blockchain-assignments/tree/main/blockchain-project](https://github.com/amishpandya/blockchain-assignments/tree/main/blockchain-project)  
-- **Project board:** [https://github.com/amishpandya/blockchain-assignments/projects/1](https://github.com/amishpandya/blockchain-assignments/projects/1)  
+- **Repository:** [https://github.com/amishpandya/blockchain-assignments/tree/main/blockchain-project](https://github.com/amishpandya/blockchain-assignments/tree/main/blockchain-project)    
 
 ---
 
