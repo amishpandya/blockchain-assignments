@@ -44,18 +44,8 @@
 4. **Frontend** listens to emitted events and updates the UI accordingly.  
 
 📁 *Architecture Diagram:*  
-Located at `docs/diagrams/week7_architecture.png`, illustrating the flow:  
+![Mining Output](../diagrams/Week-7-Progress.jpeg)  
 > *Client → Ethers.js → Smart Contract → Blockchain State/Event → UI*  
-
----
-
-
-- Event logs confirm emission of `ShipmentCreated`.  
-- Screenshots and terminal outputs available in `docs/updates/W7_UPDATE.md`.  
-- Architecture diagram attached.  
-- Repository link: [GitHub Repository – Blockchain Project](https://github.com/amishpandya/blockchain-assignments/tree/main/blockchain-project)  
-
----
 
 ## ⚙️ Technical Depth  
 
