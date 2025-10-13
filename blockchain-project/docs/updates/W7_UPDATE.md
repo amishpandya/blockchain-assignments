@@ -44,7 +44,7 @@
 4. **Frontend** listens to emitted events and updates the UI accordingly.  
 
 📁 *Architecture Diagram:*  
-![Mining Output](../../diagrams/Week-7-Progress.jpeg)  
+![Mining Output](./diagrams/Week-7-Progress.jpeg)  
 > *Client → Ethers.js → Smart Contract → Blockchain State/Event → UI*  
 
 ## ⚙️ Technical Depth  
