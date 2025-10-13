@@ -1,119 +1,91 @@
-Week 7 Progress Update
+# 🧭 Week 7 Progress Update  
 
-Team: Amish, Pranav, Lahari, Priya
+**Team:** Amish, Pranav, Lahari, Priya  
+**Date:** October 13, 2025  
 
-October 13, 2025
+---
 
-**Weekly Rubric Breakdown**
+## 📊 Weekly Rubric Breakdown  
 
-# **Progress**
+### 🚀 Progress  
 
-* Completed implementation of the core Solidity smart contract tracking.sol for decentralized supply chain tracking.
+- **Implemented Core Smart Contract — `tracking.sol`** for decentralized supply chain tracking.  
+- Defined contract structure using `pragma solidity ^0.8.0` and set SPDX license identifier.  
+- Designed and implemented key data structures:  
+  - **Enum:** `ShipmentStatus` — defines states (*Pending*, *InTransit*, *Delivered*).  
+  - **Structs:**  
+    - `Shipment` — for blockchain persistence.  
+    - `TypeShipment` — for frontend display and data mapping.  
+  - **Mapping:** Tracks shipments per sender address.  
+  - **Array:** Maintains list of all transactions for transparency.  
 
-* Defined contract structure using pragma solidity 0.8.0 and set SPDX license identifier.
+- Implemented four main **state-changing functions:**  
+  1. `createShipment()` — initializes shipment, validates payment, stores data, and emits `ShipmentCreated`.  
+  2. `startShipment()` — updates status to *InTransit* and emits `ShipmentInTransit`.  
+  3. `completeShipment()` — marks shipment as *Delivered*, transfers Ether, emits `ShipmentDelivered` and `ShipmentPaid`.  
+  4. `getShipment()` — returns shipment data for verification.  
 
-* Implemented key data types:
+- Added **query functions:**  
+  - `getShipmentsCount()` — returns total shipments created by a sender.  
+  - `getAllTransactions()` — retrieves all transactions for audit.  
 
-  * **Enum:** Shipment status states (Pending, InTransit, Delivered).
+- Configured **Hardhat scripts** for compilation and deployment with a clean configuration setup.  
 
-  * **Structs:** Shipment for blockchain persistence and TypeShipment for frontend display.
 
-  * **Mapping:** Tracks shipments per sender address.
+---
 
-  * **Array:** Maintains list of all transactions for transparency.
+## 🏗️ Architecture Overview  
 
-* Implemented four main **state-changing functions**:
+### End-to-End Workflow  
 
-  1. createShipment() — initializes a new shipment, validates payment amount, stores data, and emits ShipmentCreated.
+1. **Client (Next.js + Web3Modal)** connects wallet and triggers shipment creation.  
+2. **Ethers.js** sends transaction to deployed `tracking.sol`.  
+3. Smart contract updates on-chain `Shipment` state and emits events.  
+4. **Frontend** listens to emitted events and updates the UI accordingly.  
 
-  2. startShipment() — updates shipment status to InTransit and emits ShipmentInTransit.
+📁 *Architecture Diagram:*  
+Located at `docs/diagrams/week7_architecture.png`, illustrating the flow:  
+> *Client → Ethers.js → Smart Contract → Blockchain State/Event → UI*  
 
-  3. completeShipment() — marks shipment as delivered, transfers Ether to sender, and emits both ShipmentDelivered and ShipmentPaid.
+---
 
-  4. getShipment() — returns stored shipment data for read-back verification.
 
-* Added query functions:
+- Event logs confirm emission of `ShipmentCreated`.  
+- Screenshots and terminal outputs available in `docs/updates/W7_UPDATE.md`.  
+- Architecture diagram attached.  
+- Repository link: [GitHub Repository – Blockchain Project](https://github.com/amishpandya/blockchain-assignments/tree/main/blockchain-project)  
 
-  * getShipmentsCount() — counts total shipments created by a given sender.
+---
 
-  * getAllTransactions() — retrieves entire transaction list for audit purposes.
+## ⚙️ Technical Depth  
 
-* Configured **Hardhat scripts** to compile and deploy the contract with clean deployment configuration.
+- Demonstrated **end-to-end smart contract lifecycle** — definition → deployment → state mutation.  
+- Integrated **Solidity events** for real-time frontend updates.  
+- Practiced memory vs. storage optimizations for gas efficiency.  
+- Implemented **payable functions** with `msg.value` verification for secure Ether handling.  
+- Designed modular contract architecture supporting CI-based test automation.  
+- Prepared foundation for a **GitHub Actions CI pipeline** validating the `create → complete` flow.  
 
-* Created directory structure:
+---
 
-  * /contracts/tracking.sol
+## 🧩 Next Plan  
 
-  * /context/ — React Context API for Web3 connection logic.
+- Implement **Web3 client call** to trigger `createShipment()` and capture `ShipmentCreated` event.  
+- Write **unit tests** using **Chai + Ethers.js** for:  
+- ✅ *Happy Path:* Successful shipment creation and completion.  
+- ⚠️ *Edge Case:* Mismatched payment amount.  
+- Automate test suite in **GitHub Actions** with artifact uploads.  
+- Record a **GIF demo** showing transaction flow and state update verification.  
 
-  * /components/ — UI components (Table, Navbar, modal pop-ups).
+---
 
-# **Architecture Overview**
+## 🤝 Collaboration  
 
-* **End-to-end path:**
+| Team Member | Contributions |
+|--------------|---------------|
+| **Amish** | Implemented Solidity contract, event logic, and deployment scripts. |
+| **Pranav** | Managed dependency versions (`ethers@5.7.2`, `web3modal@1.x`), and ran Hardhat builds. |
+| **Lahari** | Created architecture diagram and ensured directory alignment. |
+| **Priya** | Led frontend integration, documentation, and test planning. |
 
-  1. Client (Next.js \+ Web3Modal) connects wallet and triggers shipment creation.
-
-  2. Transaction sent through **Ethers.js** to deployed tracking.sol contract.
-
-  3. Smart contract updates on-chain state (Shipment struct) and emits an event.
-
-  4. Frontend listens to emitted event and reflects the updated shipment status.
-
-* Architecture diagram stored in docs/diagrams/week7 architecture.png highlighting the path: *Client → Ethers.js → Smart Contract → Blockchain State/Event → UI*
-
-*Feedback*.
-
-# **Evidence**
-
-* Contract successfully compiled with Hardhat compiler v2.22.2.
-
-* Local deployment confirmed on Hardhat test network (npx hardhat node \+ npx hardhat run scripts/deploy.js \--network localhost).
-
-* Event logs show emission of ShipmentCreated after function call.
-
-* Screenshots and terminal outputs attached in docs/updates/W7 UPDATE.md.
-
-* Architecture diagram: ¡¿
-
-* Repository: [https://github.com/amishpandya/blockchain-assignments/tree/mai](https://github.com/amishpandya/blockchain-assignments/tree/main/blockchain-project)n/ [blockchain-project](https://github.com/amishpandya/blockchain-assignments/tree/main/blockchain-project)
-
-# **Technical Depth**
-
-* Demonstrated full smart-contract lifecycle: definition, deployment, and on-chain state mutation.
-
-* Integrated Solidity events for transaction observability and real-time frontend updates.
-
-* Understood use of memory vs storage for state management.
-
-* Implemented payable functions with msg.value verification for secure Ether transfer.
-
-* Applied clean contract architecture enabling future test automation.
-
-* Prepared groundwork for CI pipeline verifying the “create → complete” shipment flow.
-
-# **Next Plan**
-
-* Implement a minimal Web3 client call to trigger createShipment() and capture emitted ShipmentCreated event.
-
-* Write unit tests using chai and ethers to cover:
-
-  * Happy path — successful shipment creation and completion.
-
-  * Edge case — mismatched payment amount.
-
-* Automate tests in GitHub Actions with CI output artifacts.
-
-* Record GIF demonstrating call → event/state update → read-back verification.
-
-# **Collaboration**
-
-* **Amish:** Implemented Solidity contract, event logic, and deployment script cleanup.
-
-* **Pranav:** Version management for dependencies (ethers@5.7.2, web3modal@1.x), and Hardhat compilation testing.
-
-* **Lahari:** Architecture diagram and directory structure alignment.
-
-* **Priya:** Frontend integration, Documentation,and verification test planning.
-
-* Team conducted peer-review session validating contract functions against project rubric.
+🧩 *The team conducted a peer-review session verifying contract functionality against the project rubric.*
