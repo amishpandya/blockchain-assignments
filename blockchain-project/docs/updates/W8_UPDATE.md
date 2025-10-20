@@ -111,6 +111,7 @@
 
 > ✅ The team validated **full contract–client roundtrip** on a shared local network.
 
+![Mining Output](../../Screenshots/Shot12.png)
 ---
 
 ✅ **End of Week 8 Report**
